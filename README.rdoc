@@ -1,0 +1,44 @@
+== README
+
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+--------------------------------------------------------------------------
+Project Details.
+
+
+---------------------
+Languages version installation:
+
+rails: Rails 4.2.6
+Ruby:  ruby 2.2.4p230
+
+
+--------------------
+Database setup:
+
+run rake db:drop
+run rake db:migrate
+run rake db:seed
+
+-------------------------------
+Start the app by running,
+
+rails s
+open url: localhost:3000
+
+
+--------------------------------------
+Now, you will have two default users,
+
+Admin:
+email: admin@blog.com
+password: 123456789
+
+ordinary user:
+email: user@blog.com
+password: 123456789
+
+
+------------------------------------
+sign in with above credientials or signup with new details

@@ -1,0 +1,19 @@
+html,body {height: 100%;}
+body {background-color: #fff;}
+
+.container-table {display: table;width: 90%;}
+
+.vertical-center-row {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.form-style {
+	box-shadow: 1px 2px 3px;
+	background-color:  #c19a6b;
+  padding-bottom: 20px;
+  input{
+  	border-radius: 0px;
+		height: 46px;
+	}
+}

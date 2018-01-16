@@ -1,0 +1,38 @@
+
+<%- model_class = Post -%>
+<div class="page-header">
+  <h2 class='page-title'><%=t '.title', :default => model_class.model_name.human.pluralize.titleize+" (#{@posts.count})" %>
+    <div class="pull-right <%= is_powerfull? ? '' : 'hide' %>">
+      <%= link_to t('.new', :default => t("helpers.links.new")),
+                  new_post_path,
+                :class => 'btn btn-warning text-white' %>
+    </div>
+  </h2>
+</div>
+
+<% @posts.each do |post| %>
+<div class="panel panel-default no-border-radius">
+  <div class="panel-heading no-border-radius">
+    <h3 class="panel-title">
+      <strong><%= post.title %></strong>
+    </h3>
+  </div>
+
+
+  <div class="panel-body no-border-radius">
+    <%= post.content.split.first(70).join(' ')+'...' %> <br /><br />
+    <span style="color: #17a589;"><%= post.created_at.strftime("%d %b %Y, ") %><%= post.created_at.strftime("%I:%M:%S %P") %></span>
+    <hr class="style9">
+    <%= link_to 'Show', post, :class => 'btn btn-default btn-xs' %>
+    <% if is_powerfull? %>
+      <%= link_to t('.edit', :default => t("helpers.links.edit")),
+      edit_post_path(post), :class => 'btn btn-default btn-xs' %>
+      <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+      post_path(post),
+      :method => :delete,
+      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+      :class => 'btn btn-xs btn-danger text-white' %>
+    <% end %>
+  </div>
+</div>
+<% end %>

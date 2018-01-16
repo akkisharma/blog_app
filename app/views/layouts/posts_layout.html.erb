@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= content_for?(:title) ? yield(:title) : "BlogApp" %></title>
+  <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= favicon_link_tag 'black-skull-144-260007.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144' %>
+  <%= favicon_link_tag 'black-skull-114-260007.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114' %>
+  <%= favicon_link_tag 'black-skull-72-260007.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72' %>
+  <%= favicon_link_tag 'black-skull-57-260007.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png' %>
+  <%= favicon_link_tag 'black-skull-32.png', :rel => 'shortcut icon' %>
+  <%= javascript_include_tag "application" %>
+</head>
+<body class="no-overflow-x body-bg">
+  <div class="container main-container">
+    <div class="row">
+      <%= render partial: 'shared/navigation_bar' %>
+
+      <div class="col-lg-12">
+        <div class="pull-right">
+          <% if user_signed_in? %>
+          Signed in as <%= current_user.email %>. Not you?<br />
+          <a href="#" class="badge badge-primary pull-right" style="background-color: #117864;color:#fff;">
+            <%= is_powerfull? ? 'Admin' : 'Visitor' %>
+          </a>
+          <br />
+          <% else %>
+          <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="col-lg-12">
+        <%= bootstrap_flash %>
+        <%= yield %>
+      </div>
+
+    </div>
+    <footer class="footer">
+      <p>Pyrumas &copy; Company 2018</p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.js"></script>
+  </body>
+  </html>

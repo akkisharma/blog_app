@@ -1,0 +1,26 @@
+	<!DOCTYPE html>
+<html>
+<head>
+	<title>BlogApp</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<%= csrf_meta_tags %>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-12 pull-left">
+				<span><h1 style="color: black;">Blog@pp</h1></span>
+			</div>
+		</div>
+	</div>
+	<div class="container container-table">
+		<div class="row vertical-center-row">
+			<%= render partial: 'shared/flash_message' %>
+			<%= yield %>
+		</div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<div class="form-horizontal">
+
+  <div class="row">
+
+    <div class="col-sm-12">
+      <%= form_for([@post, @post.comments.build], :html => {:class => "form-horizontal", id: 'comment-form'}) do |f| %>
+
+      <div class="form-group">
+        <div class="col-sm-4">
+          <%= f.text_field :commenter, :class => "form-control", :placeholder => "Commenter", value: current_user.email, :required => true, minlength: 3 %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-8">
+          <%= f.text_area :body, row: 2, :class => "form-control", :placeholder => "Body", style: 'resize: none;', :required => true, minlength: 5 %>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <div class="col-sm-2">
+          <%= f.hidden_field :user_id, :value => current_user.id %>
+          <%= f.submit 'Submit', class: "btn btn-default form-control" %>
+        </div>
+      </div>
+    </div>
+
+    <% end %>
+  </div>
+</div>
